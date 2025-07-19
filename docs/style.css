@@ -154,36 +154,45 @@ h2 {
 
 /* Responsive Design */
 @media (max-width: 480px) {
+    html, body {
+        overflow-y: auto; /* Allow scrolling on mobile if content overflows */
+    }
+
     .container {
         border-radius: 0;
         width: 100%;
-        min-height: 100vh;
-        box-sizing: border-box;
+        min-height: 100vh; /* Ensure it covers the full viewport height */
+        box-sizing: border-box; /* Include padding in height calculation */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .logo {
-        max-width: 220px;
+        max-width: 200px;
     }
 
     .slogan-main {
-        font-size: 1.3rem;
+        font-size: 1.6rem; /* Larger slogan */
     }
 
     .slogan-sub {
-        font-size: 1rem;
+        font-size: 1.2rem; /* Larger sub-slogan */
     }
 
     .phone-number {
-        font-size: 1.6rem;
+        font-size: 2rem;   /* Much larger phone number */
+        color: #fff !important; /* Force white color, overriding browser defaults */
+        text-decoration: none; /* Ensure no underline */
     }
 
     h2 {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
     }
 
     .delivery-button, .contact-button {
-        width: 60px;
-        height: 60px;
+        width: 65px;
+        height: 65px;
     }
 }
 
@@ -193,15 +202,16 @@ h2 {
     }
 
     .slogan-main {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
 
     .slogan-sub {
-        font-size: 0.9rem;
+        font-size: 1.1rem;
     }
 
     .phone-number {
-        font-size: 1.4rem;
+        font-size: 1.8rem; /* Adjust for the smallest screens */
+        color: #fff !important;
     }
 
     h2 {
@@ -209,7 +219,7 @@ h2 {
     }
 
     .delivery-button, .contact-button {
-        width: 50px;
-        height: 50px;
+        width: 60px;
+        height: 60px;
     }
 }

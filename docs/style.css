@@ -1,15 +1,16 @@
 html, body {
-    height: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Previene el scroll */
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Previene el scroll en el body */
 }
 
 body {
     font-family: 'Poppins', sans-serif;
     background: url('assets/fondo_ladrillos.jpg') no-repeat center center fixed;
     background-size: cover;
-    color: #f0f0f0; /* Texto claro para contraste */
+    color: #f0f0f0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,7 +26,7 @@ body {
     padding: 1rem;
     position: relative;
     z-index: 1;
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente para legibilidad */
+    background-color: rgba(0, 0, 0, 0.6);
     border-radius: 15px;
 }
 
@@ -37,13 +38,13 @@ main {
 }
 
 footer {
-    padding-bottom: 2rem;
+    padding-bottom: 1.5rem;
     font-size: 0.9rem;
     color: #aaa;
 }
 
 .logo {
-    max-width: 280px; /* Logo más grande */
+    max-width: 260px;
     margin: 0 auto 1rem auto;
     cursor: pointer;
     transition: transform 0.3s ease;
@@ -67,11 +68,48 @@ footer {
     transform: scale(0.98);
 }
 
-.slogan {
-    font-size: 1.2rem;
+.slogan-container {
+    margin-bottom: 1rem;
+}
+
+.slogan-main {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 0 8px rgba(0,0,0,0.9);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.slogan-sub {
+    font-size: 1.1rem;
+    font-style: italic;
     color: #f0f0f0;
     text-shadow: 0 0 5px rgba(0,0,0,0.7);
-    margin-bottom: 3rem;
+    margin: 0.2rem 0 0 0;
+}
+
+.phone-number {
+    display: inline-block;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 0 0 5px rgba(255,255,255,0.5); /* Brillo sutil */
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.phone-number:hover {
+    transform: scale(1.05);
+    color: #ffc107;
+    text-shadow: 0 0 10px rgba(255,255,255,0.8), 0 0 20px rgba(255,255,255,0.5); /* Brillo más fuerte al pasar el mouse */
+}
+
+.phone-icon {
+    margin-right: 0.5rem;
+    vertical-align: middle;
+    font-size: 1.4rem; /* Tamaño más pequeño para el ícono */
 }
 
 h2 {
@@ -84,8 +122,9 @@ h2 {
 
 .delivery-options, .contact-options {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 .delivery-button, .contact-button {
@@ -94,8 +133,8 @@ h2 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: inline-block;
     box-shadow: 0 10px 25px rgba(0,0,0,0.7);
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
 }
 
 .delivery-button:hover, .contact-button:hover {
@@ -111,4 +150,66 @@ h2 {
 
 .contact-title {
     margin-top: 2.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .container {
+        border-radius: 0;
+        width: 100%;
+        min-height: 100vh;
+        box-sizing: border-box;
+    }
+
+    .logo {
+        max-width: 220px;
+    }
+
+    .slogan-main {
+        font-size: 1.3rem;
+    }
+
+    .slogan-sub {
+        font-size: 1rem;
+    }
+
+    .phone-number {
+        font-size: 1.6rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    .delivery-button, .contact-button {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 360px) {
+    .logo {
+        max-width: 180px;
+    }
+
+    .slogan-main {
+        font-size: 1.2rem;
+    }
+
+    .slogan-sub {
+        font-size: 0.9rem;
+    }
+
+    .phone-number {
+        font-size: 1.4rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    .delivery-button, .contact-button {
+        width: 50px;
+        height: 50px;
+    }
 }

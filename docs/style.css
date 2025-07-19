@@ -1,25 +1,27 @@
-html {
+html, body {
     height: 100%;
-}
-
-body {
-    min-height: 100%;
+    width: 100%;
     margin: 0;
+    padding: 0;
+    overflow: hidden; /* Absolutely no scrolling */
     font-family: 'Poppins', sans-serif;
     background: url('assets/fondo_ladrillos.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #f0f0f0;
-    display: flex;
-    align-items: center; /* Vertical center */
-    justify-content: center; /* Horizontal center */
     text-align: center;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    /* Remove focus outline for all elements */
+    *:focus {
+        outline: none;
+    }
 }
 
 .container {
+    height: 100%;
     width: 100%;
     max-width: 450px;
+    margin: 0 auto;
     padding: 1rem;
+    box-sizing: border-box;
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 15px;
     display: flex;
@@ -38,6 +40,7 @@ footer {
     padding-bottom: 1.5rem;
     font-size: 0.9rem;
     color: #aaa;
+    flex-shrink: 0; /* Prevent footer from shrinking */
 }
 
 .logo {
@@ -92,7 +95,7 @@ footer {
     font-weight: 600;
     color: #fff;
     text-decoration: none;
-    text-shadow: 0 0 5px rgba(255,255,255,0.5); /* Brillo sutil */
+    text-shadow: 0 0 5px rgba(255,255,255,0.5);
     margin-bottom: 2rem;
     transition: transform 0.3s ease, color 0.3s ease;
 }
@@ -100,13 +103,13 @@ footer {
 .phone-number:hover {
     transform: scale(1.05);
     color: #ffc107;
-    text-shadow: 0 0 10px rgba(255,255,255,0.8), 0 0 20px rgba(255,255,255,0.5); /* Brillo más fuerte al pasar el mouse */
+    text-shadow: 0 0 10px rgba(255,255,255,0.8), 0 0 20px rgba(255,255,255,0.5);
 }
 
 .phone-icon {
     margin-right: 0.5rem;
     vertical-align: middle;
-    font-size: 1.4rem; /* Tamaño más pequeño para el ícono */
+    font-size: 1.4rem;
 }
 
 h2 {
@@ -149,57 +152,24 @@ h2 {
     margin-top: 2.5rem;
 }
 
-/* Responsive Design */
+/* Responsive Design for smaller and shorter screens */
 @media (max-width: 480px) {
-    html, body {
-        overflow-y: auto; /* Allow scrolling on mobile if content overflows */
-    }
-
     .container {
         border-radius: 0;
-        width: 100%;
-        min-height: 100vh; /* Ensure it covers the full viewport height */
-        box-sizing: border-box; /* Include padding in height calculation */
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        padding: 0.5rem 1rem; /* Reduced vertical padding */
     }
 
-    .logo {
-        max-width: 200px;
-    }
-
-    .slogan-main {
-        font-size: 1.6rem; /* Larger slogan */
-    }
-
-    .slogan-sub {
-        font-size: 1.2rem; /* Larger sub-slogan */
-    }
-
-    .phone-number {
-        font-size: 2rem;   /* Much larger phone number */
-        color: #fff !important; /* Force white color, overriding browser defaults */
-        text-decoration: none; /* Ensure no underline */
-    }
-
-    h2 {
-        font-size: 1.5rem;
-    }
-
-    .delivery-button, .contact-button {
-        width: 65px;
-        height: 65px;
-    }
-}
-
-@media (max-width: 360px) {
     .logo {
         max-width: 180px;
+        margin-bottom: 0.5rem;
+    }
+
+    .slogan-container {
+        margin-bottom: 0.8rem;
     }
 
     .slogan-main {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
     }
 
     .slogan-sub {
@@ -207,16 +177,58 @@ h2 {
     }
 
     .phone-number {
-        font-size: 1.8rem; /* Adjust for the smallest screens */
+        font-size: 1.8rem;
+        margin-bottom: 1rem; /* Reduced margin */
         color: #fff !important;
+        text-decoration: none;
     }
 
     h2 {
         font-size: 1.3rem;
+        margin-bottom: 0.8rem; /* Reduced margin */
+    }
+
+    .contact-title {
+        margin-top: 1.2rem; /* Reduced margin */
+    }
+
+    .delivery-options, .contact-options {
+        gap: 0.8rem; /* Reduced gap */
     }
 
     .delivery-button, .contact-button {
         width: 60px;
         height: 60px;
+    }
+    
+    footer {
+        padding-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .logo {
+        max-width: 150px;
+    }
+
+    .slogan-main {
+        font-size: 1.3rem;
+    }
+
+    .slogan-sub {
+        font-size: 1rem;
+    }
+
+    .phone-number {
+        font-size: 1.6rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .delivery-button, .contact-button {
+        width: 55px;
+        height: 55px;
     }
 }

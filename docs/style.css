@@ -1,33 +1,30 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
+html {
     height: 100%;
-    overflow: hidden; /* Previene el scroll en el body */
 }
 
 body {
+    min-height: 100%;
+    margin: 0;
     font-family: 'Poppins', sans-serif;
     background: url('assets/fondo_ladrillos.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #f0f0f0;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: center; /* Vertical center */
+    justify-content: center; /* Horizontal center */
     text-align: center;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
     width: 100%;
     max-width: 450px;
     padding: 1rem;
-    position: relative;
-    z-index: 1;
     background-color: rgba(0, 0, 0, 0.6);
     border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 main {

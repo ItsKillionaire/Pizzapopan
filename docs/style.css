@@ -1,0 +1,114 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Previene el scroll */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: url('assets/fondo_ladrillos.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #f0f0f0; /* Texto claro para contraste */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    max-width: 450px;
+    padding: 1rem;
+    position: relative;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente para legibilidad */
+    border-radius: 15px;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+footer {
+    padding-bottom: 2rem;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.logo {
+    max-width: 280px; /* Logo más grande */
+    margin: 0 auto 1rem auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        filter: drop-shadow(0 0 10px #5A2653) drop-shadow(0 0 20px #5A2653) drop-shadow(0 0 30px #5A2653);
+    }
+    20%, 24%, 55% {
+        filter: none;
+    }
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo:active {
+    transform: scale(0.98);
+}
+
+.slogan {
+    font-size: 1.2rem;
+    color: #f0f0f0;
+    text-shadow: 0 0 5px rgba(0,0,0,0.7);
+    margin-bottom: 3rem;
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    text-shadow: 0 0 8px rgba(0,0,0,0.8);
+}
+
+.delivery-options, .contact-options {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.delivery-button, .contact-button {
+    border-radius: 22%;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+    width: 80px;
+    height: 80px;
+}
+
+.delivery-button:hover, .contact-button:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.9);
+}
+
+.delivery-logo, .contact-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.contact-title {
+    margin-top: 2.5rem;
+}

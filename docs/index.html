@@ -1,29 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<style>
-body {
-  margin-left: 200px;
-  background: #5d9ab2 url("img_tree.png") no-repeat top left;
-}
-
-.center_div {
-  border: 1px solid gray;
-  margin-left: auto;
-  margin-right: auto;
-  width: 90%;
-  background-color: #d0f0f6;
-  text-align: left;
-  padding: 8px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzapopan - Pide Online</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 <body>
+    <div class="container">
+        <main class="animate__animated animate__fadeInUp">
+            <img src="assets/pizzapopan_logo.png" alt="Pizzapopan Logo" class="logo">
+            <p class="slogan">La pizza que te encanta, a un clic de distancia.</p>
 
-<div class="center_div">
-  <h1>Hello World!</h1>
-  <p>Pizzapopis 🍕</p>
-</div>
+            <h2>Pide a domicilio</h2>
+            <div class="delivery-options">
+                <a href="https://www.ubereats.com/mx-en/store/pizzapopan/k3NBgcllWMCXlbVYAxx8Vw" class="delivery-button" target="_blank">
+                    <img src="assets/ubereats_logo.png" alt="Uber Eats" class="delivery-logo"> 
+                </a>
+                <a href="https://www.rappi.com.mx/restaurantes/1930011689-pizzapopan" class="delivery-button" target="_blank">
+                    <img src="assets/rappi_logo.png" alt="Rappi" class="delivery-logo">
+                </a>
+            </div>
 
+            <h2 class="contact-title">O contáctanos</h2>
+            <div class="contact-options">
+                <a href="https://wa.me/5213311136968" class="contact-button" target="_blank">
+                    <img src="assets/whatsapp_logo.png" alt="WhatsApp" class="contact-logo">
+                </a>
+                <a href="https://www.facebook.com/pizzapopan/" class="contact-button" target="_blank">
+                    <img src="assets/fb_logo.png" alt="Facebook" class="contact-logo">
+                </a>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Pizzapopan</p>
+        </footer>
+    </div>
 </body>
 </html>

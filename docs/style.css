@@ -1,6 +1,7 @@
 /* --- Global Styles & Resets --- */
 html, body {
-    height: 100vh; /* Use vh to ensure full screen height on mobile */
+    height: 100vh; /* Fallback for browsers that don't support the --vh variable */
+    height: calc(var(--vh, 1vh) * 100);
     width: 100%;
     margin: 0;
     padding: 0;
@@ -20,7 +21,8 @@ html, body {
 
 /* --- Main Container --- */
 .container {
-    height: 100vh; /* Use vh to ensure full screen height on mobile */
+    height: 100vh; /* Fallback for browsers that don't support the --vh variable */
+    height: calc(var(--vh, 1vh) * 100);
     width: 100%;
     max-width: 450px; /* Optimal width for mobile-first view */
     margin: 0 auto;

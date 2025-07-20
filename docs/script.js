@@ -1,4 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- Dynamic Viewport Height Fix for Mobile ---
+    // This function calculates the actual inner height of the window and sets it as a CSS
+    // custom property (--vh). This avoids the common issue on mobile browsers where 100vh
+    // is taller than the visible screen area due to browser UI elements.
+    const setVh = () => {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+
+    // Set the value on initial page load
+    setVh();
+    // Re-calculate on resize or orientation change to handle dynamic changes
+    window.addEventListener('resize', setVh);
+    window.addEventListener('orientationchange', setVh);
+
+
     // --- DOM Element Selections ---
     const logo = document.querySelector('.logo');
     const sound = document.getElementById('logo-sound');

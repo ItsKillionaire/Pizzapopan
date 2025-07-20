@@ -187,19 +187,29 @@ h2 {
 .menu-button {
     background-color: #5A2653;
     color: white;
-    padding: 15px 27.5px;
+    padding: 30px 55px;
     border: none;
     border-radius: 8px;
-    font-size: 1.2rem;
+    font-size: 2.4rem;
     font-weight: 700;
     cursor: pointer;
     transition: transform 0.1s ease, box-shadow 0.1s ease;
     margin-top: 1rem;
-    box-shadow: 0 5px 0 #3d1a38, 0 8px 15px rgba(0,0,0,0.4);
+    box-shadow: 0 10px 0 #3d1a38, 0 16px 30px rgba(0,0,0,0.4);
     text-transform: uppercase;
     display: inline-block;
     width: auto;
     align-self: center;
+    animation: float 3s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 .menu-button:hover {
@@ -455,7 +465,7 @@ h2 {
     }
     .menu-button {
         font-size: 1rem;
-        padding: 10px 55px;
+        padding: 20px 110px;
     }
 }
 
@@ -567,8 +577,8 @@ h2 {
         height: 50px;
     }
     .menu-button {
-        padding: 12px 27.5px;
-        font-size: 1rem;
+        padding: 24px 55px;
+        font-size: 2rem;
     }
 }
 

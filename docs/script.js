@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const logo = document.querySelector('.logo');
     const sound = document.getElementById('logo-sound');
+    const menuSound = document.getElementById('menu-sound');
     const openMenuBtn = document.getElementById('open-menu-btn');
     const closeMenuBtn = document.getElementById('close-menu-btn');
     const menuModal = document.getElementById('menu-modal');
@@ -40,7 +41,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (openMenuBtn && menuModal) {
-        openMenuBtn.addEventListener('click', () => toggleModal(menuModal, true));
+        openMenuBtn.addEventListener('click', () => {
+            if (menuSound) {
+                menuSound.currentTime = 0;
+                menuSound.play().catch(error => console.error("Error playing sound:", error));
+            }
+            toggleModal(menuModal, true);
+        });
     }
 
     if (closeMenuBtn && menuModal) {

@@ -157,6 +157,16 @@ h2 {
     box-shadow: 0 8px 20px rgba(0,0,0,0.7);
     width: 65px;
     height: 65px;
+    animation: breathing 2.5s infinite ease-in-out;
+}
+
+@keyframes breathing {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95);
+    }
 }
 
 .delivery-button:hover, .contact-button:hover {

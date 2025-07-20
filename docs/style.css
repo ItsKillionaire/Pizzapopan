@@ -207,6 +207,182 @@ h2 {
     }
 }
 
+/* Menu Button Styling */
+.menu-button {
+    background-color: #e44d26; /* A vibrant color for the button */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 50px; /* Pill-shaped button */
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 1.5rem; /* Space above the button */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.menu-button:hover {
+    background-color: #ff6f42; /* Slightly lighter on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.menu-button:active {
+    transform: translateY(0); /* Press down effect */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Popup Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Darker overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Popup Content */
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto; /* Enable scrolling for long content */
+    position: relative;
+    transform: scale(0.9); /* Start slightly smaller */
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1); /* Scale up when active */
+}
+
+/* Close Button for Popup */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+    color: #e44d26;
+}
+
+/* Styling for the iframe inside the popup */
+.modal-content iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Menu Styles */
+.menu-container {
+    color: #333;
+}
+
+.menu-container h1, .menu-container h2 {
+    color: #e44d26; /* A reddish-orange, common for food themes */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.menu-section {
+    margin-bottom: 40px;
+}
+
+.menu-section h2 {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px dashed #eee;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.menu-item img {
+    width: 100px; /* Smaller image size for better layout */
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 20px;
+    flex-shrink: 0; /* Prevent image from shrinking */
+}
+
+.item-details {
+    flex-grow: 1;
+}
+
+.item-details h3 {
+    margin: 0 0 8px 0;
+    color: #e44d26;
+    font-size: 1.2em;
+}
+
+.item-details p {
+    margin: 0;
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #555;
+}
+
+.highlight-star {
+    color: gold;
+    font-size: 1.2em;
+    margin-right: 5px;
+}
+
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 15px;
+    }
+    .close-btn {
+        font-size: 1.8rem;
+        top: 5px;
+        right: 10px;
+    }
+    .menu-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}
+
 @media (max-width: 360px) {
     .logo {
         max-width: 150px;

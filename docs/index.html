@@ -23,6 +23,8 @@
                 <span class="phone-icon">📞</span> 33 1113 6968
             </a>
 
+            <button id="open-menu-btn" class="menu-button">Ver Menú</button>
+
             <h2>Pide a domicilio</h2>
             <div class="delivery-options">
                 <a href="https://www.ubereats.com/mx-en/store/pizzapopan/k3NBgcllWMCXlbVYAxx8Vw" class="delivery-button" target="_blank">
@@ -53,6 +55,191 @@
         <footer>
             <p>&copy; 2025 Pizzapopan</p>
         </footer>
+    </div>
+
+    <div id="menu-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="close-menu-btn" class="close-btn">&times;</button>
+            <div class="menu-container">
+                <h1>Menú Pizzapopan</h1>
+                <p style="text-align: center; margin-bottom: 30px; font-size: 1.1em; color: #666;">Una selección de deliciosas pizzas y boneless disponibles para entrega en Zapopan.</p>
+        
+                <div class="menu-section">
+                    <h2><span class="highlight-star">⭐</span> Artículos Destacados</h2>
+                    <div class="menu-item">
+                        <img src="assets/pizza_al_gusto.jpeg" alt="Pizza al gusto">
+                        <div class="item-details">
+                            <h3>Pizza al gusto</h3>
+                            <p>Personaliza tu pizza con cualquiera de nuestros 8 ingredientes.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="assets/pizza_especialidad.jpeg" alt="Pizza Individual Especialidad">
+                        <div class="item-details">
+                            <h3>Pizza Individual "Especialidad"</h3>
+                            <p>Se prepara con nuestros 8 ingredientes; pepperoni, champiñones, tocino, salchicha de pavo, chorizo, piña, pimiento morrón y jamón.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="assets/pizza_carnivora.jpeg" alt="Pizza Individual Carnívora">
+                        <div class="item-details">
+                            <h3>Pizza Individual "Carnívora"</h3>
+                            <p>Pepperoni, tocino, salchicha de pavo, chorizo y jamón.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="assets/pizza_colibri.jpeg" alt="Pizza Individual Colibrí">
+                        <div class="item-details">
+                            <h3>Pizza Individual "Colibrí"</h3>
+                            <p>Pepperoni, piña, champiñones, tocino y pimiento morrón.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="assets/boneless_bufalo.jpeg" alt="Boneless de Pollo Búfalo">
+                        <div class="item-details">
+                            <h3>Boneless de Pollo "Búfalo"</h3>
+                            <p>1/4 Kg + Vegetales + Aderezo Ranch.</p>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="menu-section">
+                    <h2>Menú Completo - Pizzas</h2>
+                    <p style="text-align: center; margin-bottom: 20px; font-style: italic; color: #777;">(Todas las pizzas son de tamaño individual)</p>
+                    <div class="menu-item">
+                        <img src="assets/pizza_al_gusto.jpeg" alt="Pizza al gusto">
+                        <div class="item-details">
+                            <h3>Pizza al gusto</h3>
+                            <p>Personaliza tu pizza con cualquiera de nuestros 8 ingredientes.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="assets/pizza_especialidad.jpeg" alt="Pizza Individual Especialidad">
+                        <div class="item-details">
+                            <h3>Pizza Individual "Especialidad"</h3>
+                            <p>Pepperoni, champiñones, tocino, salchicha de pavo, chorizo, piña, pimiento morrón y jamón.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="assets/pizza_carnivora.jpeg" alt="Pizza Individual Carnívora">
+                        <div class="item-details">
+                            <h3>Pizza Individual "Carnívora"</h3>
+                            <p>Pepperoni, tocino, salchicha de pavo, chorizo y jamón.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="assets/pizza_carnes_frias.jpeg" alt="Pizza Individual Carnes Frías">
+                        <div class="item-details">
+                            <h3>Pizza Individual "Carnes Frías"</h3>
+                            <p>Pizza de pepperoni, jamón y salchicha de pavo.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="assets/pizza_calixto.jpeg" alt="Pizza Individual Calixto">
+                        <div class="item-details">
+                            <h3>Pizza Individual "Calixto"</h3>
+                            <p>Jamón, piña y champiñones.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="assets/pizza_jaguayana.jpeg" alt="Pizza Individual Jaguayana">
+                        <div class="item-details">
+                            <h3>Pizza Individual "Jaguayana"</h3>
+                            <p>Clásica pizza de jamón y piña.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="assets/pizza_colibri.jpeg" alt="Pizza Individual Colibrí">
+                        <div class="item-details">
+                            <h3>Pizza Individual "Colibrí"</h3>
+                            <p>Pepperoni, piña, champiñones, tocino y pimiento morrón.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="assets/pizza_pepperoni_fuera.jpeg" alt="Pizza Individual Pepperoni por fuera">
+                        <div class="item-details">
+                            <h3>Pizza Individual "Pepperoni por fuera"</h3>
+                            <p>Clásica pizza con pepperoni por fuera.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="assets/pizza_faisan.jpeg" alt="Pizza Individual Faisán">
+                        <div class="item-details">
+                            <h3>Pizza Individual "Faisán"</h3>
+                            <p>Jamón, chorizo y tocino.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="assets/pizza_veggie.jpeg" alt="Pizza Individual Veggie">
+                        <div class="item-details">
+                            <h3>Pizza Individual "Veggie"</h3>
+                            <p>Pizza vegetariana preparada con piña, pimiento morrón, champiñones.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="assets/pizza_francis.jpeg" alt="Pizza Individual Francis">
+                        <div class="item-details">
+                            <h3>Pizza Individual "Francis"</h3>
+                            <p>Pizza de pepperoni con salchicha de pavo.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="assets/pizza_belen.jpeg" alt="Pizza Individual Belén">
+                        <div class="item-details">
+                            <h3>Pizza Individual "Belén"</h3>
+                            <p>Deliciosa pizza de pepperoni y tocino.</p>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="menu-section">
+                    <h2>Menú Completo - Boneless de Pollo</h2>
+                    <p style="text-align: center; margin-bottom: 20px; font-style: italic; color: #777;">(Todas las órdenes son de 1/4 kg y se sirven con vegetales y aderezo Ranch)</p>
+                    <div class="menu-item">
+                        <img src="assets/boneless_mango_habanero.jpeg" alt="Boneless de Pollo Mango/Habanero">
+                        <div class="item-details">
+                            <h3>Boneless de Pollo</h3>
+                            <p>Mango/Habanero</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="assets/boneless_bufalo.jpeg" alt="Boneless de Pollo Búfalo">
+                        <div class="item-details">
+                            <h3>Boneless de Pollo</h3>
+                            <p>Búfalo</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="assets/boneless_bbq.jpeg" alt="Boneless de Pollo BBQ">
+                        <div class="item-details">
+                            <h3>Boneless de Pollo</h3>
+                            <p>BBQ</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="assets/boneless_bbq_hot.jpeg" alt="Boneless de Pollo BBQ Hot">
+                        <div class="item-details">
+                            <h3>Boneless de Pollo</h3>
+                            <p>BBQ Hot</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="assets/boneless_naturales.jpeg" alt="Boneless de Pollo Naturales">
+                        <div class="item-details">
+                            <h3>Boneless de Pollo</h3>
+                            <p>Naturales</p>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <img src="assets/aderezo_ranch.jpeg" alt="Porción Extra de Aderezo Ranch">
+                        <div class="item-details">
+                            <h3>Porción Extra de Aderezo Ranch</h3>
+                            <p>Porción extra de Aderezo Ranch.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <audio id="logo-sound" src="assets/service_bell.mp3" preload="auto"></audio>

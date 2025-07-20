@@ -35,4 +35,30 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Image Popup Logic
+    const imagePopupOverlay = document.createElement('div');
+    imagePopupOverlay.classList.add('image-popup-overlay');
+    imagePopupOverlay.innerHTML = `
+        <div class="image-popup-content">
+            <img src="" alt="Popup Image">
+        </div>
+    `;
+    document.body.appendChild(imagePopupOverlay);
+
+    const menuImages = document.querySelectorAll('.menu-item img');
+    const popupImage = imagePopupOverlay.querySelector('.image-popup-content img');
+
+    menuImages.forEach(image => {
+        image.addEventListener('click', () => {
+            popupImage.src = image.src;
+            imagePopupOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    imagePopupOverlay.addEventListener('click', () => {
+        imagePopupOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
 });

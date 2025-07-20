@@ -204,7 +204,7 @@ h2 {
 }
 
 .menu-button-text {
-    font-size: 1.984rem;
+    font-size: 2.471rem;
 }
 
 @keyframes text-shine-animation {
@@ -489,7 +489,7 @@ h2 {
         width: 80vw; /* Set a direct width to make it noticeably wider */
     }
     .menu-button-text {
-        font-size: 1.089rem; /* 10% bigger */
+        font-size: 1.438rem;
     }
 }
 

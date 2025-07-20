@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const logo = document.querySelector(".logo");
   const sound = document.getElementById("logo-sound");
   const menuSound = document.getElementById("menu-sound");
+  const scarySound = document.getElementById("scary-sound");
   const pizzaTimeSound = document.getElementById("pizza-time-sound");
   const openMenuBtn = document.getElementById("open-menu-btn");
   const closeMenuBtn = document.getElementById("close-menu-btn");
@@ -74,7 +75,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if (logo && sound && pizzaTimeSound) {
     logo.addEventListener("click", () => {
       clickCount++;
-      if (clickCount % 10 === 0) {
+      if (clickCount === 100) {
+        triggerScaryEasterEgg();
+      } else if (clickCount % 10 === 0) {
         pizzaTimeSound.currentTime = 0;
         pizzaTimeSound
           .play()
@@ -313,6 +316,45 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     animate();
+  }
+
+  function triggerScaryEasterEgg() {
+    const scaryImage = document.createElement("img");
+    scaryImage.src = "assets/ee/spooky/rip.png";
+    scaryImage.className = "easter-egg-image scary";
+    scaryImage.style.position = "fixed";
+    scaryImage.style.top = "50%";
+    scaryImage.style.left = "50%";
+    scaryImage.style.transform = "translate(-50%, -50%) scale(0)";
+    scaryImage.style.transition = "transform 45s ease-in-out, opacity 15s ease-in-out";
+    scaryImage.style.zIndex = "10000";
+    scaryImage.style.opacity = "1";
+    document.body.appendChild(scaryImage);
+
+    scarySound.currentTime = 0;
+    scarySound.play().catch(error => console.error("Error playing scary sound:", error));
+
+    setTimeout(() => {
+        scaryImage.style.transform = "translate(-50%, -50%) scale(10)";
+    }, 100);
+
+    setTimeout(() => {
+        let fadeOutInterval = setInterval(() => {
+            if (scarySound.volume > 0.1) {
+                scarySound.volume -= 0.1;
+            } else {
+                scarySound.pause();
+                scarySound.currentTime = 0;
+                scarySound.volume = 1;
+                clearInterval(fadeOutInterval);
+            }
+        }, 200);
+        scaryImage.style.opacity = "0";
+    }, 30000);
+
+    setTimeout(() => {
+        scaryImage.remove();
+    }, 45000);
   }
 });
 

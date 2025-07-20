@@ -1,11 +1,9 @@
 /* --- Global Styles & Resets --- */
 html, body {
-    height: 100vh; /* Fallback for browsers that don't support the --vh variable */
-    height: calc(var(--vh, 1vh) * 100);
-    width: 100%;
+    height: 100%; /* Important for html and body to fill the window */
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Absolutely no scrolling on the main page */
+    overflow-x: hidden; /* Prevent horizontal scroll if not needed */
     font-family: 'Poppins', sans-serif;
     background: url('assets/fondo_ladrillos.jpg') no-repeat center center fixed;
     background-size: cover;
@@ -21,8 +19,8 @@ html, body {
 
 /* --- Main Container --- */
 .container {
-    height: 100vh; /* Fallback for browsers that don't support the --vh variable */
-    height: calc(var(--vh, 1vh) * 100);
+    min-height: 100vh; /* Fallback for older browsers */
+    min-height: 100dvh; /* Use dynamic viewport height if supported */
     width: 100%;
     max-width: 450px; /* Optimal width for mobile-first view */
     margin: 0 auto;

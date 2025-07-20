@@ -5,69 +5,99 @@ document.addEventListener('DOMContentLoaded', () => {
     const openMenuBtn = document.getElementById('open-menu-btn');
     const closeMenuBtn = document.getElementById('close-menu-btn');
     const menuModal = document.getElementById('menu-modal');
+    const phoneNumber = document.querySelector('.phone-number');
+    const yearSpan = document.getElementById('year');
 
-    // --- Event Listener for Logo Sound ---
+    // --- Utility Functions ---
+
+    /**
+     * Toggles the visibility of a modal and controls body scroll.
+     * @param {HTMLElement} modal - The modal element to show/hide.
+     * @param {boolean} show - True to show the modal, false to hide.
+     */
+    const toggleModal = (modal, show) => {
+        if (modal) {
+            modal.classList.toggle('active', show);
+            document.body.style.overflow = show ? 'hidden' : '';
+        }
+    };
+
+    // --- Event Listeners ---
+
     // Plays a sound when the main logo is clicked.
     if (logo && sound) {
         logo.addEventListener('click', () => {
             sound.currentTime = 0; // Rewind to the start
-            sound.play();
+            sound.play().catch(error => console.error("Error playing sound:", error));
         });
     }
 
-    // --- Menu Modal Logic ---
-    // Opens the menu modal when the 'Ver Menú' button is clicked.
+    // Opens the menu modal.
     if (openMenuBtn && menuModal) {
-        openMenuBtn.addEventListener('click', () => {
-            menuModal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling on the body
-        });
+        openMenuBtn.addEventListener('click', () => toggleModal(menuModal, true));
     }
 
-    // Closes the menu modal when the close button (X) is clicked.
+    // Closes the menu modal.
     if (closeMenuBtn && menuModal) {
-        closeMenuBtn.addEventListener('click', () => {
-            menuModal.classList.remove('active');
-            document.body.style.overflow = ''; // Restore scrolling on the body
-        });
+        closeMenuBtn.addEventListener('click', () => toggleModal(menuModal, false));
     }
 
-    // Closes the menu modal if the user clicks on the overlay (outside the content).
+    // Closes the menu modal if the overlay is clicked.
     if (menuModal) {
         menuModal.addEventListener('click', (event) => {
             if (event.target === menuModal) {
-                menuModal.classList.remove('active');
-                document.body.style.overflow = '';
+                toggleModal(menuModal, false);
             }
         });
     }
 
     // --- Image Popup Logic ---
-    // Creates and manages a popup for viewing larger images from the menu.
     const imagePopupOverlay = document.createElement('div');
-    imagePopupOverlay.classList.add('image-popup-overlay');
+    imagePopupOverlay.className = 'image-popup-overlay';
     imagePopupOverlay.innerHTML = `
         <div class="image-popup-content">
-            <img src="" alt="Popup Image">
+            <img src="" alt="Popup Image" />
         </div>
     `;
     document.body.appendChild(imagePopupOverlay);
+    const popupImage = imagePopupOverlay.querySelector('img');
 
-    const menuImages = document.querySelectorAll('.menu-item img');
-    const popupImage = imagePopupOverlay.querySelector('.image-popup-content img');
-
-    // Attaches a click event to each menu image to open the popup.
-    menuImages.forEach(image => {
+    document.querySelectorAll('.menu-item img').forEach(image => {
         image.addEventListener('click', () => {
             popupImage.src = image.src;
-            imagePopupOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent body scrolling
+            popupImage.alt = image.alt; // Copy alt text to popup
+            toggleModal(imagePopupOverlay, true);
         });
     });
 
-    // Closes the image popup when the overlay is clicked.
-    imagePopupOverlay.addEventListener('click', () => {
-        imagePopupOverlay.classList.remove('active');
-        document.body.style.overflow = ''; // Restore body scrolling
-    });
+    imagePopupOverlay.addEventListener('click', () => toggleModal(imagePopupOverlay, false));
+
+    // --- Phone Number Copy Logic ---
+    if (phoneNumber) {
+        phoneNumber.addEventListener('click', (event) => {
+            const isDesktop = window.matchMedia("(min-width: 769px)").matches;
+
+            if (isDesktop) {
+                event.preventDefault(); // Prevent default 'tel:' link action only on desktop
+                const phone = phoneNumber.href.replace('tel:', '').replace('+52', '');
+
+                navigator.clipboard.writeText(phone).then(() => {
+                    const originalText = phoneNumber.innerHTML;
+                    phoneNumber.innerHTML = '¡Copiado!';
+                    phoneNumber.classList.add('copied');
+                    setTimeout(() => {
+                        phoneNumber.innerHTML = originalText;
+                        phoneNumber.classList.remove('copied');
+                    }, 2000);
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+            }
+        });
+    }
+
+    // --- Dynamic Copyright Year ---
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
 });

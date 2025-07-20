@@ -33,7 +33,7 @@
           <p class="slogan-main">PIZZA INDIVIDUAL Y BONELESS</p>
           <p class="slogan-sub">Sin orillas, sin huesos...</p>
         </div>
-        <a href="tel:+523311136968" class="phone-number" aria-label="Llamar al 33 1113 6968">
+        <a href="tel:+523311136968" class="phone-number" aria-label="Llamar al 33 1113 6968" title="Llamar al 33 1113 6968">
           <span class="phone-icon">📞</span> 33 1113 6968
         </a>
 
@@ -117,7 +117,7 @@
       </main>
 
       <footer>
-        <p>&copy; 2025 Pizzapopan</p>
+        <p>&copy; <span id="year"></span> Pizzapopan</p>
       </footer>
     </div>
 
@@ -133,14 +133,7 @@
             />
             <h1 id="menu-title" class="menu-title">Menú</h1>
           </div>
-          <p
-            style="
-              text-align: center;
-              margin-bottom: 30px;
-              font-size: 1.1em;
-              color: #666;
-            "
-          >
+          <p class="menu-intro">
             ¡El tamaño perfecto para tu antojo! Todas nuestras pizzas son <strong>individuales</strong>.
           </p>
 
@@ -150,7 +143,7 @@
               <span class="highlight-star">⭐</span>
             </h2>
             <div class="menu-item">
-              <img src="assets/pizza_al_gusto.jpeg" alt="Pizza al gusto" />
+              <img src="assets/pizza_al_gusto.webp" alt="Pizza al gusto con 8 ingredientes a elegir." />
               <div class="item-details">
                 <h3>Pizza al gusto</h3>
                 <p>
@@ -161,8 +154,8 @@
             </div>
             <div class="menu-item">
               <img
-                src="assets/pizza_especialidad.jpeg"
-                alt="Pizza Individual Especialidad"
+                src="assets/pizza_especialidad.webp"
+                alt="Pizza Especialidad con pepperoni, champiñones, tocino, salchicha, chorizo, piña, pimiento y jamón."
               />
               <div class="item-details">
                 <h3>Especialidad</h3>
@@ -175,8 +168,8 @@
             </div>
             <div class="menu-item">
               <img
-                src="assets/pizza_carnivora.jpeg"
-                alt="Pizza Individual Carnívora"
+                src="assets/pizza_carnivora.webp"
+                alt="Pizza Carnívora con pepperoni, tocino, salchicha, chorizo y jamón."
               />
               <div class="item-details">
                 <h3>Carnívora</h3>
@@ -185,8 +178,8 @@
             </div>
             <div class="menu-item">
               <img
-                src="assets/pizza_colibri.jpeg"
-                alt="Pizza Individual Colibrí"
+                src="assets/pizza_colibri.webp"
+                alt="Pizza Colibrí con pepperoni, piña, champiñones, tocino y pimiento morrón."
               />
               <div class="item-details">
                 <h3>Colibrí</h3>
@@ -195,8 +188,8 @@
             </div>
             <div class="menu-item">
               <img
-                src="assets/boneless_bufalo.jpeg"
-                alt="Boneless de Pollo Búfalo"
+                src="assets/boneless_bufalo.webp"
+                alt="Boneless de Pollo en salsa Búfalo con vegetales y aderezo Ranch."
               />
               <div class="item-details">
                 <h3>Boneless Búfalo</h3>
@@ -209,8 +202,8 @@
             <h2>Nuestras Pizzas</h2>
             <div class="menu-item">
               <img
-                src="assets/pizza_carnes_frias.jpeg"
-                alt="Pizza Individual Carnes Frías"
+                src="assets/pizza_carnes_frias.webp"
+                alt="Pizza de Carnes Frías con pepperoni, jamón y salchicha de pavo."
               />
               <div class="item-details">
                 <h3>Carnes Frías</h3>
@@ -219,8 +212,8 @@
             </div>
             <div class="menu-item">
               <img
-                src="assets/pizza_calixto.jpeg"
-                alt="Pizza Individual Calixto"
+                src="assets/pizza_calixto.webp"
+                alt="Pizza Calixto con jamón, piña y champiñones."
               />
               <div class="item-details">
                 <h3>Calixto</h3>
@@ -229,8 +222,8 @@
             </div>
             <div class="menu-item">
               <img
-                src="assets/pizza_jaguayana.jpeg"
-                alt="Pizza Individual Jaguayana"
+                src="assets/pizza_jaguayana.webp"
+                alt="Pizza Jaguayana con jamón y piña."
               />
               <div class="item-details">
                 <h3>Jaguayana</h3>
@@ -239,8 +232,8 @@
             </div>
             <div class="menu-item">
               <img
-                src="assets/pizza_pepperoni_fuera.jpeg"
-                alt="Pizza Individual Pepperoni por fuera"
+                src="assets/pizza_pepperoni_fuera.webp"
+                alt="Pizza de Pepperoni."
               />
               <div class="item-details">
                 <h3>Pepperoni por fuera</h3>
@@ -249,8 +242,8 @@
             </div>
             <div class="menu-item">
               <img
-                src="assets/pizza_faisan.jpeg"
-                alt="Pizza Individual Faisán"
+                src="assets/pizza_faisan.webp"
+                alt="Pizza Faisán con jamón, chorizo y tocino."
               />
               <div class="item-details">
                 <h3>Faisán</h3>
@@ -259,8 +252,8 @@
             </div>
             <div class="menu-item">
               <img
-                src="assets/pizza_veggie.jpeg"
-                alt="Pizza Individual Veggie"
+                src="assets/pizza_veggie.webp"
+                alt="Pizza Veggie con piña, pimiento morrón y champiñones."
               />
               <div class="item-details">
                 <h3>Veggie</h3>
@@ -272,8 +265,8 @@
             </div>
             <div class="menu-item">
               <img
-                src="assets/pizza_francis.jpeg"
-                alt="Pizza Individual Francis"
+                src="assets/pizza_francis.webp"
+                alt="Pizza Francis con pepperoni y salchicha de pavo."
               />
               <div class="item-details">
                 <h3>Francis</h3>
@@ -281,7 +274,7 @@
               </div>
             </div>
             <div class="menu-item">
-              <img src="assets/pizza_belen.jpeg" alt="Pizza Individual Belén" />
+              <img src="assets/pizza_belen.webp" alt="Pizza Belén con pepperoni y tocino." />
               <div class="item-details">
                 <h3>Belén</h3>
                 <p>Deliciosa pizza de pepperoni y tocino.</p>
@@ -291,36 +284,29 @@
 
           <div class="menu-section">
             <h2>Nuestros Boneless de Pollo</h2>
-            <p
-              style="
-                text-align: center;
-                margin-bottom: 20px;
-                font-style: italic;
-                color: #777;
-              "
-            >
+            <p class="menu-sub-intro">
               (Todas las órdenes son de 1/4 kg y se sirven con vegetales y
               aderezo Ranch)
             </p>
             <div class="menu-item">
               <img
-                src="assets/boneless_mango_habanero.jpeg"
-                alt="Boneless de Pollo Mango/Habanero"
+                src="assets/boneless_mango_habanero.webp"
+                alt="Boneless de Pollo en salsa Mango/Habanero."
               />
               <div class="item-details">
                 <h3>Mango/Habanero</h3>
               </div>
             </div>
             <div class="menu-item">
-              <img src="assets/boneless_bbq.jpeg" alt="Boneless de Pollo BBQ" />
+              <img src="assets/boneless_bbq.webp" alt="Boneless de Pollo en salsa BBQ." />
               <div class="item-details">
                 <h3>BBQ</h3>
               </div>
             </div>
             <div class="menu-item">
               <img
-                src="assets/boneless_bbq_hot.jpeg"
-                alt="Boneless de Pollo BBQ Hot"
+                src="assets/boneless_bbq_hot.webp"
+                alt="Boneless de Pollo en salsa BBQ Hot."
               />
               <div class="item-details">
                 <h3>BBQ Hot</h3>
@@ -328,8 +314,8 @@
             </div>
             <div class="menu-item">
               <img
-                src="assets/boneless_naturales.jpeg"
-                alt="Boneless de Pollo Naturales"
+                src="assets/boneless_naturales.webp"
+                alt="Boneless de Pollo naturales."
               />
               <div class="item-details">
                 <h3>Naturales</h3>
@@ -337,8 +323,8 @@
             </div>
             <div class="menu-item">
               <img
-                src="assets/aderezo_ranch.jpeg"
-                alt="Porción Extra de Aderezo Ranch"
+                src="assets/aderezo_ranch.webp"
+                alt="Porción extra de aderezo Ranch."
               />
               <div class="item-details">
                 <h3>Porción Extra de Aderezo Ranch</h3>

@@ -11,8 +11,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let clickCount = 0;
   const easterEggImages = [
-    "assets/piffle_cat.gif",
-    "assets/pizza-dancing-pizza.gif",
+    "assets/ee/jiggly.png",
+    "assets/ee/piffle_cat.gif",
+    "assets/ee/pizza_1.png",
+    "assets/ee/pizza_kawaii.webp",
+    "assets/ee/pizza_melting.png",
+    "assets/ee/pizza-dancing-pizza.gif",
   ];
   const easterEggContainer = document.getElementById("easter-egg-container");
 

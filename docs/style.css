@@ -413,6 +413,16 @@ h2 {
     color: gold;
     font-size: 1.2em;
     margin-right: 5px;
+    animation: shine 1.5s infinite alternate;
+}
+
+@keyframes shine {
+    from {
+        text-shadow: 0 0 5px gold;
+    }
+    to {
+        text-shadow: 0 0 20px gold, 0 0 30px gold;
+    }
 }
 
 /* Image Popup Styles */

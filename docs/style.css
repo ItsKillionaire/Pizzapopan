@@ -599,3 +599,21 @@ h2 {
         margin-top: 0.8rem;
     }
 }
+
+/* Animations */
+.menu-button.shine-effect {
+    animation: float 3s infinite ease-in-out, shine-animation 1.5s forwards;
+}
+
+@keyframes shine-animation {
+    0% {
+        box-shadow: 0 10px 0 #3d1a38, 0 16px 30px rgba(0,0,0,0.4);
+    }
+    20% {
+        box-shadow: 0 10px 0 #3d1a38, 0 16px 30px rgba(0,0,0,0.4),
+                    0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6);
+    }
+    100% {
+        box-shadow: 0 10px 0 #3d1a38, 0 16px 30px rgba(0,0,0,0.4);
+    }
+}

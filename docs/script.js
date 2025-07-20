@@ -124,4 +124,23 @@ document.addEventListener('DOMContentLoaded', () => {
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
     }
+
+    // Shine animation for menu button
+    if (openMenuBtn) {
+        const triggerShine = () => {
+            openMenuBtn.classList.add('shine-effect');
+            setTimeout(() => {
+                openMenuBtn.classList.remove('shine-effect');
+            }, 1500); // Animation duration is 1.5s
+        };
+
+        // Trigger shine randomly between 10 to 20 seconds
+        setInterval(() => {
+            const randomDelay = Math.random() * (10000) + 10000; // Random between 10s and 20s
+            setTimeout(triggerShine, randomDelay);
+        }, 10000); // Check every 10 seconds if a shine should be triggered
+
+        // Initial shine after a short delay
+        setTimeout(triggerShine, 2000);
+    }
 });

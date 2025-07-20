@@ -8,60 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const phoneNumber = document.querySelector('.phone-number');
     const yearSpan = document.getElementById('year');
 
-    const toggleModal = (modal, show) => {
-        if (modal) {
-            const isActive = modal.classList.contains('active');
-            if (isActive === show) return;
-
-            modal.classList.toggle('active', show);
-            document.body.style.overflow = show ? 'hidden' : '';
-
-            if (show) {
-                history.pushState({ modalOpen: true }, null);
-            } else if (history.state && history.state.modalOpen) {
-                history.back();
-            }
-        }
-    };
-
-    window.addEventListener('popstate', (event) => {
-        if (menuModal && menuModal.classList.contains('active')) {
-            toggleModal(menuModal, false);
-        }
-        if (imagePopupOverlay && imagePopupOverlay.classList.contains('active')) {
-            toggleModal(imagePopupOverlay, false);
-        }
-    });
-
-    if (logo && sound) {
-        logo.addEventListener('click', () => {
-            sound.currentTime = 0;
-            sound.play().catch(error => console.error("Error playing sound:", error));
-        });
-    }
-
-    if (openMenuBtn && menuModal) {
-        openMenuBtn.addEventListener('click', () => {
-            if (menuSound) {
-                menuSound.currentTime = 0;
-                menuSound.play().catch(error => console.error("Error playing sound:", error));
-            }
-            toggleModal(menuModal, true);
-        });
-    }
-
-    if (closeMenuBtn && menuModal) {
-        closeMenuBtn.addEventListener('click', () => toggleModal(menuModal, false));
-    }
-
-    if (menuModal) {
-        menuModal.addEventListener('click', (event) => {
-            if (event.target === menuModal) {
-                toggleModal(menuModal, false);
-            }
-        });
-    }
-
     const imagePopupOverlay = document.createElement('div');
     imagePopupOverlay.className = 'image-popup-overlay';
     imagePopupOverlay.innerHTML = `
@@ -72,15 +18,85 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(imagePopupOverlay);
     const popupImage = imagePopupOverlay.querySelector('img');
 
+    const openModal = (modal) => {
+        if (!modal) return;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeModal = (modal) => {
+        if (!modal) return;
+        modal.classList.remove('active');
+        // Only restore scrolling if no other modals are active
+        if (!document.querySelector('.modal-overlay.active, .image-popup-overlay.active')) {
+            document.body.style.overflow = '';
+        }
+    };
+
+    const handleHashChange = () => {
+        switch(window.location.hash) {
+            case '#menu':
+                openModal(menuModal);
+                closeModal(imagePopupOverlay);
+                break;
+            case '#image':
+                openModal(menuModal); // Ensure menu stays open
+                openModal(imagePopupOverlay);
+                break;
+            default:
+                closeModal(menuModal);
+                closeModal(imagePopupOverlay);
+                break;
+        }
+    };
+
+    // Use onhashchange to handle back/forward and manual hash changes
+    window.addEventListener('hashchange', handleHashChange);
+    // Initial check in case user lands with a hash
+    handleHashChange();
+
+    if (logo && sound) {
+        logo.addEventListener('click', () => {
+            sound.currentTime = 0;
+            sound.play().catch(error => console.error("Error playing sound:", error));
+        });
+    }
+
+    if (openMenuBtn) {
+        openMenuBtn.addEventListener('click', () => {
+            if (menuSound) {
+                menuSound.currentTime = 0;
+                menuSound.play().catch(error => console.error("Error playing sound:", error));
+            }
+            window.location.hash = 'menu';
+        });
+    }
+
+    if (closeMenuBtn) {
+        closeMenuBtn.addEventListener('click', () => {
+            window.history.back();
+        });
+    }
+
+    if (menuModal) {
+        menuModal.addEventListener('click', (event) => {
+            if (event.target === menuModal) {
+                window.history.back();
+            }
+        });
+    }
+
     document.querySelectorAll('.menu-item img').forEach(image => {
         image.addEventListener('click', () => {
             popupImage.src = image.src;
             popupImage.alt = image.alt;
-            toggleModal(imagePopupOverlay, true);
+            window.location.hash = 'image';
         });
     });
 
-    imagePopupOverlay.addEventListener('click', () => toggleModal(imagePopupOverlay, false));
+    imagePopupOverlay.addEventListener('click', () => {
+        window.history.back();
+    });
 
     if (phoneNumber) {
         phoneNumber.addEventListener('click', (event) => {

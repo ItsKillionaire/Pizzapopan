@@ -190,7 +190,7 @@ h2 {
     padding: 30px 55px;
     border: none;
     border-radius: 8px;
-    font-size: 2.4rem;
+    font-size: 1.8rem; /* Decreased font size significantly */
     font-weight: 700;
     cursor: pointer;
     transition: transform 0.1s ease, box-shadow 0.1s ease;
@@ -201,6 +201,26 @@ h2 {
     width: auto;
     align-self: center;
     animation: float 3s infinite ease-in-out;
+}
+
+.menu-button-text {
+    font-size: 1.872rem; /* Decreased font size significantly */
+}
+
+@keyframes text-shine-animation {
+    0% {
+        text-shadow: none;
+    }
+    20% {
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 0 15px rgba(255, 255, 255, 0.6);
+    }
+    100% {
+        text-shadow: none;
+    }
+}
+
+.menu-button.shine-effect .menu-button-text {
+    animation: text-shine-animation 1.5s forwards;
 }
 
 @keyframes float {
@@ -464,8 +484,12 @@ h2 {
         right: 10px;
     }
     .menu-button {
-        font-size: 1rem;
-        padding: 20px 110px;
+        font-size: 0.968rem; /* 10% bigger */
+        padding: 18.15px 0; /* Remove horizontal padding to let width control */
+        width: 80vw; /* Set a direct width to make it noticeably wider */
+    }
+    .menu-button-text {
+        font-size: 1.089rem; /* 10% bigger */
     }
 }
 

@@ -340,17 +340,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(() => {
         let fadeOutInterval = setInterval(() => {
-            if (scarySound.volume > 0.1) {
-                scarySound.volume -= 0.1;
+            if (scarySound.volume > 0.005) { // Fade out to near zero
+                scarySound.volume -= 0.005; // Smaller step for smoother fade over 15s
             } else {
                 scarySound.pause();
                 scarySound.currentTime = 0;
-                scarySound.volume = 1;
+                scarySound.volume = 1; // Reset volume for next play
                 clearInterval(fadeOutInterval);
             }
-        }, 200);
+        }, 75); // Adjust interval for 15-second fade (75ms * 200 steps = 15000ms)
         scaryImage.style.opacity = "0";
-    }, 30000);
+    }, 28000); // Start fade out after 28 seconds
 
     setTimeout(() => {
         scaryImage.remove();

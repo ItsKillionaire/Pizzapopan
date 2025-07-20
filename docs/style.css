@@ -9,11 +9,12 @@ html, body {
     background-size: cover;
     color: #f0f0f0;
     text-align: center;
-    /* Remove focus outline for all elements */
-    *:focus, a:focus, button:focus {
-        outline: none !important;
-        -webkit-tap-highlight-color: transparent; /* For mobile Safari */
-    }
+    -webkit-tap-highlight-color: transparent; /* For mobile Safari */
+}
+
+/* Remove focus outline for all elements */
+*:focus, a:focus, button:focus {
+    outline: none !important;
 }
 
 .container {

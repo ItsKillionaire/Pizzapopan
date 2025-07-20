@@ -1,37 +1,33 @@
-/* --- Global Styles & Resets --- */
 html, body {
-    height: 100vh; /* Fallback for older browsers */
-    height: 100dvh; /* Use dynamic viewport height */
+    height: 100vh;
+    height: 100dvh;
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Lock the page from scrolling */
+    overflow: hidden;
     font-family: 'Poppins', sans-serif;
     color: #f0f0f0;
     text-align: center;
-    background-color: #000; /* Fallback background color */
-    -webkit-tap-highlight-color: transparent; /* Disable tap highlight on mobile Safari */
+    background-color: #000;
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* Remove focus outline for all elements for a cleaner look */
 *:focus, a:focus, button:focus {
     outline: none !important;
 }
 
-/* --- Main Container --- */
 .container {
-    height: 100%; /* Inherit height from body */
+    height: 100%;
     width: 100%;
-    max-width: 450px; /* Optimal width for mobile-first view */
+    max-width: 450px;
     margin: 0 auto;
     padding: 1rem;
     box-sizing: border-box;
-    /* background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for readability */ */
     border-radius: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Align content to the top */
-    position: relative; /* Needed for the pseudo-element */
-    z-index: 1; /* Ensure content is above the background */
+    justify-content: flex-start;
+    position: relative;
+    z-index: 1;
 }
 
 .container::before {
@@ -43,22 +39,21 @@ html, body {
     height: 100%;
     background: url('assets/fondo_ladrillos.webp') no-repeat center center fixed;
     background-size: cover;
-    background-color: rgba(0, 0, 0, 0.5); /* Veil */
+    background-color: rgba(0, 0, 0, 0.5);
     background-blend-mode: multiply;
-    z-index: -1; /* Place the background behind the content */
+    z-index: -1;
 }
 
 main {
     flex-grow: 1;
-    overflow-y: auto; /* Allow internal scrolling if content overflows */
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
 main::-webkit-scrollbar {
     display: none;
 }
@@ -67,16 +62,14 @@ footer {
     padding: 1rem 0 0.5rem 0;
     font-size: 0.9rem;
     color: #aaa;
-    flex-shrink: 0; /* Prevent footer from shrinking */
+    flex-shrink: 0;
 }
 
-/* --- Logo & Slogan --- */
 .logo {
-    max-width: 280px; /* Slightly smaller logo */
-    margin: 0 auto 0.5rem auto; /* Reduced bottom margin */
+    max-width: 280px;
+    margin: 0 auto 0.5rem auto;
     cursor: pointer;
     transition: transform 0.3s ease;
-    /* Neon flicker effect for the logo */
     animation: flicker 1.5s infinite alternate;
 }
 
@@ -90,19 +83,19 @@ footer {
 }
 
 .logo:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
+    transform: scale(1.05);
 }
 
 .logo:active {
-    transform: scale(0.98); /* Click effect */
+    transform: scale(0.98);
 }
 
 .slogan-container {
-    margin-bottom: 0.5rem; /* Reduced bottom margin */
+    margin-bottom: 0.5rem;
 }
 
 .slogan-main {
-    font-size: 1.3rem; /* Slightly smaller font */
+    font-size: 1.3rem;
     font-weight: 700;
     color: #fff;
     text-shadow: 0 0 8px rgba(0,0,0,0.9);
@@ -111,41 +104,40 @@ footer {
 }
 
 .slogan-sub {
-    font-size: 1rem; /* Slightly smaller font */
+    font-size: 1rem;
     font-style: italic;
     color: #f0f0f0;
     text-shadow: 0 0 5px rgba(0,0,0,0.7);
     margin: 0.2rem 0 0 0;
 }
 
-/* --- Contact & Delivery --- */
 .phone-number {
     display: inline-block;
-    font-size: 1.6rem; /* Slightly smaller font */
+    font-size: 1.6rem;
     font-weight: 600;
     color: #fff;
     text-decoration: none;
     text-shadow: 0 0 5px rgba(255,255,255,0.5);
-    margin-bottom: 1rem; /* Reduced bottom margin */
+    margin-bottom: 1rem;
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .phone-number:hover {
     transform: scale(1.05);
-    color: #ffc107; /* Highlight color on hover */
+    color: #ffc107;
     text-shadow: 0 0 10px rgba(255,255,255,0.8), 0 0 20px rgba(255,255,255,0.5);
 }
 
 .phone-icon {
     margin-right: 0.5rem;
     vertical-align: middle;
-    font-size: 1.3rem; /* Slightly smaller font */
+    font-size: 1.3rem;
 }
 
 h2 {
     font-weight: 600;
-    font-size: 1.4rem; /* Slightly smaller font */
-    margin-bottom: 1rem; /* Reduced bottom margin */
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
     color: #fff;
     text-shadow: 0 0 8px rgba(0,0,0,0.8);
 }
@@ -154,7 +146,7 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.8rem; /* Reduced gap */
+    gap: 0.8rem;
 }
 
 .delivery-button, .contact-button {
@@ -163,7 +155,7 @@ h2 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: inline-block;
     box-shadow: 0 8px 20px rgba(0,0,0,0.7);
-    width: 65px; /* Slightly smaller buttons */
+    width: 65px;
     height: 65px;
 }
 
@@ -179,26 +171,25 @@ h2 {
 }
 
 .contact-title {
-    margin-top: 1.5rem; /* Reduced top margin */
+    margin-top: 1.5rem;
 }
 
-/* --- Menu Button --- */
 .menu-button {
-    background-color: #5A2653; /* Signature color */
+    background-color: #5A2653;
     color: white;
-    padding: 10px 22px; /* Slightly smaller padding */
+    padding: 10px 22px;
     border: none;
-    border-radius: 50px; /* Pill shape */
-    font-size: 1.1rem; /* Slightly smaller font */
+    border-radius: 50px;
+    font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: 1rem; /* Reduced top margin */
+    margin-top: 1rem;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .menu-button:hover {
-    background-color: #7a3d70; /* Lighter shade on hover */
+    background-color: #7a3d70;
     transform: translateY(-2px);
 }
 
@@ -207,7 +198,6 @@ h2 {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* --- Modal (Menu & Image Popup) --- */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -236,14 +226,14 @@ h2 {
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
     max-width: 90%;
     max-height: 90%;
-    overflow-y: auto; /* Scroll for long content */
+    overflow-y: auto;
     position: relative;
     transform: scale(0.9);
     transition: transform 0.3s ease;
 }
 
 .modal-overlay.active .modal-content {
-    transform: scale(1); /* Scale in animation */
+    transform: scale(1);
 }
 
 .close-btn {
@@ -267,16 +257,14 @@ h2 {
 }
 
 .close-btn:hover {
-    color: #5A2653; /* Signature color on hover */
+    color: #5A2653;
 }
 
-/* --- Phone Number Copy Feedback --- */
 .phone-number.copied {
-    color: #28a745; /* Success green */
+    color: #28a745;
     font-weight: 700;
 }
 
-/* --- Menu Specific Styles --- */
 .menu-container {
     color: #333;
 }
@@ -367,7 +355,7 @@ h2 {
     border-radius: 8px;
     margin-right: 20px;
     flex-shrink: 0;
-    cursor: pointer; /* Indicate clickable images */
+    cursor: pointer;
     transition: transform 0.2s ease;
 }
 
@@ -404,7 +392,6 @@ h2 {
     to { text-shadow: 0 0 20px gold, 0 0 30px gold; }
 }
 
-/* --- Image Popup Styles --- */
 .image-popup-overlay {
     position: fixed;
     top: 0;
@@ -412,7 +399,7 @@ h2 {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.85);
-    z-index: 1001; /* Above menu modal */
+    z-index: 1001;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -430,7 +417,7 @@ h2 {
     width: 350px;
     height: 350px;
     transition: transform 0.3s ease;
-    transform: scale(0.5); /* Start smaller for animation */
+    transform: scale(0.5);
 }
 
 .image-popup-overlay.active .image-popup-content {
@@ -444,8 +431,7 @@ h2 {
     border-radius: 8px;
 }
 
-/* --- Responsive Design --- */
-@media (max-width: 768px) { /* For tablets and smaller desktops */
+@media (max-width: 768px) {
     .modal-content {
         padding: 15px;
     }
@@ -460,7 +446,7 @@ h2 {
     }
 }
 
-@media (max-width: 480px) { /* For most mobile phones */
+@media (max-width: 480px) {
     .container {
         border-radius: 0;
         padding: 0.5rem 1rem;
@@ -486,7 +472,7 @@ h2 {
     .phone-number {
         font-size: 1.8rem;
         margin-bottom: 1rem;
-        color: #fff !important; /* Ensure visibility */
+        color: #fff !important;
         text-decoration: none;
     }
 
@@ -513,7 +499,7 @@ h2 {
     }
 }
 
-@media (max-width: 360px) { /* For smaller mobile screens */
+@media (max-width: 360px) {
     .logo {
         max-width: 150px;
     }
@@ -537,5 +523,11 @@ h2 {
     .delivery-button, .contact-button {
         width: 55px;
         height: 55px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 480px;
     }
 }

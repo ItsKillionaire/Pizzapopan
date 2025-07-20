@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- DOM Element Selections ---
     const logo = document.querySelector('.logo');
     const sound = document.getElementById('logo-sound');
     const openMenuBtn = document.getElementById('open-menu-btn');
@@ -8,13 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const phoneNumber = document.querySelector('.phone-number');
     const yearSpan = document.getElementById('year');
 
-    // --- Utility Functions ---
-
-    /**
-     * Toggles the visibility of a modal and controls body scroll.
-     * @param {HTMLElement} modal - The modal element to show/hide.
-     * @param {boolean} show - True to show the modal, false to hide.
-     */
     const toggleModal = (modal, show) => {
         if (modal) {
             modal.classList.toggle('active', show);
@@ -22,27 +14,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- Event Listeners ---
-
-    // Plays a sound when the main logo is clicked.
     if (logo && sound) {
         logo.addEventListener('click', () => {
-            sound.currentTime = 0; // Rewind to the start
+            sound.currentTime = 0;
             sound.play().catch(error => console.error("Error playing sound:", error));
         });
     }
 
-    // Opens the menu modal.
     if (openMenuBtn && menuModal) {
         openMenuBtn.addEventListener('click', () => toggleModal(menuModal, true));
     }
 
-    // Closes the menu modal.
     if (closeMenuBtn && menuModal) {
         closeMenuBtn.addEventListener('click', () => toggleModal(menuModal, false));
     }
 
-    // Closes the menu modal if the overlay is clicked.
     if (menuModal) {
         menuModal.addEventListener('click', (event) => {
             if (event.target === menuModal) {
@@ -51,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Image Popup Logic ---
     const imagePopupOverlay = document.createElement('div');
     imagePopupOverlay.className = 'image-popup-overlay';
     imagePopupOverlay.innerHTML = `
@@ -65,20 +50,19 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.menu-item img').forEach(image => {
         image.addEventListener('click', () => {
             popupImage.src = image.src;
-            popupImage.alt = image.alt; // Copy alt text to popup
+            popupImage.alt = image.alt;
             toggleModal(imagePopupOverlay, true);
         });
     });
 
     imagePopupOverlay.addEventListener('click', () => toggleModal(imagePopupOverlay, false));
 
-    // --- Phone Number Copy Logic ---
     if (phoneNumber) {
         phoneNumber.addEventListener('click', (event) => {
             const isDesktop = window.matchMedia("(min-width: 769px)").matches;
 
             if (isDesktop) {
-                event.preventDefault(); // Prevent default 'tel:' link action only on desktop
+                event.preventDefault();
                 const phone = phoneNumber.href.replace('tel:', '').replace('+52', '');
 
                 navigator.clipboard.writeText(phone).then(() => {
@@ -96,7 +80,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Dynamic Copyright Year ---
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
     }

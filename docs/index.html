@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pizzapopan - Pizza Individual y Boneless a Domicilio en Zapopan</title>
+    <title>Pizzapopan 🍕 - Pizza a Domicilio en Zapopan</title>
+    <link rel="icon" href="assets/pizzapopan_logo.png" type="image/png" />
     <meta
       name="description"
       content="La mejor pizza a domicilio en Zapopan. Pide tu pizza individual o boneless por Uber Eats, Rappi, Didi Food o llámanos. ¡Sin orillas, sin huesos, puro sabor!"
@@ -19,6 +20,39 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Pizzapopan",
+        "image": "https://pizzapopan.shop/assets/pizzapopan_logo.png",
+        "@id": "https://pizzapopan.shop",
+        "url": "https://pizzapopan.shop",
+        "telephone": "+523311136968",
+        "servesCuisine": "Pizza",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Altabrisa Pte. 1432-TORRE 7",
+          "addressLocality": "Zapopan",
+          "addressRegion": "JAL",
+          "postalCode": "45200",
+          "addressCountry": "MX"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Friday",
+              "Saturday",
+              "Sunday",
+              "Monday"
+            ],
+            "opens": "13:00",
+            "closes": "23:00"
+          }
+        ]
+      }
+      </script>
   </head>
   <body>
     <div class="container">
@@ -30,7 +64,7 @@
           aria-label="Logo de Pizzapopan, haz clic para escuchar un sonido"
         />
         <div class="slogan-container">
-          <p class="slogan-main">PIZZA INDIVIDUAL Y BONELESS</p>
+          <h1 class="slogan-main">PIZZA INDIVIDUAL Y BONELESS</h1>
           <p class="slogan-sub">Sin orillas, sin huesos...</p>
         </div>
         <a href="tel:+523311136968" class="phone-number" aria-label="Llamar al 33 1113 6968" title="Llamar al 33 1113 6968">
@@ -102,7 +136,7 @@
             <img src="assets/fb_logo.png" alt="Facebook" class="contact-logo" />
           </a>
           <a
-            href="https://www.google.com/maps/search/?api=1&query=Altabrisa+Pte.+1432-TORRE+7,+45200+Zapopan,+Jal."
+            href="https://maps.app.goo.gl/1CcyUz4XR6P5VJdN6"
             class="contact-button"
             target="_blank"
             aria-label="Ver nuestra ubicación en Google Maps"

@@ -9,10 +9,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const toggleModal = (modal, show) => {
         if (modal) {
+            const isActive = modal.classList.contains('active');
+            if (isActive === show) return;
+
             modal.classList.toggle('active', show);
             document.body.style.overflow = show ? 'hidden' : '';
+
+            if (show) {
+                history.pushState({ modalOpen: true }, null);
+            } else if (history.state && history.state.modalOpen) {
+                history.back();
+            }
         }
     };
+
+    window.addEventListener('popstate', (event) => {
+        if (menuModal && menuModal.classList.contains('active')) {
+            toggleModal(menuModal, false);
+        }
+        if (imagePopupOverlay && imagePopupOverlay.classList.contains('active')) {
+            toggleModal(imagePopupOverlay, false);
+        }
+    });
 
     if (logo && sound) {
         logo.addEventListener('click', () => {

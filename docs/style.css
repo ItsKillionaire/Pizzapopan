@@ -187,7 +187,7 @@ h2 {
 .menu-button {
     background-color: #5A2653;
     color: white;
-    padding: 30px 55px;
+    padding: 30px 49.5px;
     border: none;
     border-radius: 8px;
     font-size: 1.8rem; /* Decreased font size significantly */
@@ -486,7 +486,7 @@ h2 {
     .menu-button {
         font-size: 0.968rem; /* 10% bigger */
         padding: 18.15px 0; /* Remove horizontal padding to let width control */
-        width: 80vw; /* Set a direct width to make it noticeably wider */
+        width: 72vw;
     }
     .menu-button-text {
         font-size: 1.438rem;

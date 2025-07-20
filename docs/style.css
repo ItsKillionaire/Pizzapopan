@@ -6,10 +6,9 @@ html, body {
     padding: 0;
     overflow: hidden; /* Lock the page from scrolling */
     font-family: 'Poppins', sans-serif;
-    background: url('assets/fondo_ladrillos.jpg') no-repeat center center fixed;
-    background-size: cover;
     color: #f0f0f0;
     text-align: center;
+    background-color: #000; /* Fallback background color */
     -webkit-tap-highlight-color: transparent; /* Disable tap highlight on mobile Safari */
 }
 
@@ -31,6 +30,20 @@ html, body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start; /* Align content to the top */
+    position: relative; /* Needed for the pseudo-element */
+    z-index: 1; /* Ensure content is above the background */
+}
+
+.container::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('assets/fondo_ladrillos.jpg') no-repeat center center fixed;
+    background-size: cover;
+    z-index: -1; /* Place the background behind the content */
 }
 
 main {

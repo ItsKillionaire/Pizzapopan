@@ -187,7 +187,7 @@ h2 {
 .menu-button {
     background-color: #5A2653;
     color: white;
-    padding: 30px 0;
+    padding: 30px 44.55px;
     border: none;
     border-radius: 8px;
     font-size: 1.8rem; /* Decreased font size significantly */
@@ -198,7 +198,7 @@ h2 {
     box-shadow: 0 10px 0 #3d1a38, 0 16px 30px rgba(0,0,0,0.4);
     text-transform: uppercase;
     display: inline-block;
-    width: 251px;
+    width: auto;
     align-self: center;
     animation: float 3s infinite ease-in-out;
 }
@@ -486,7 +486,7 @@ h2 {
     .menu-button {
         font-size: 0.968rem; /* 10% bigger */
         padding: 18.15px 0; /* Remove horizontal padding to let width control */
-        width: 251px;
+        width: 225.9px;
     }
     .menu-button-text {
         font-size: 1.438rem;
@@ -640,4 +640,24 @@ h2 {
     100% {
         box-shadow: 0 10px 0 #3d1a38, 0 16px 30px rgba(0,0,0,0.4);
     }
+}
+
+#easter-egg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Hide images when they go off-screen */
+    pointer-events: none; /* Allow clicks to pass through */
+    z-index: 999; /* Ensure it's above other content but below modals */
+}
+
+.easter-egg-image {
+    position: absolute;
+    width: 200px; /* Example size, adjust as needed */
+    height: 200px; /* Example size, adjust as needed */
+    object-fit: contain; /* Ensure the image scales correctly within its bounds */
+    pointer-events: none; /* Inherited, but good to be explicit */
+    transition: transform linear; /* For smooth movement */
 }

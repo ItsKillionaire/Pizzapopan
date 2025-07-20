@@ -187,7 +187,7 @@ h2 {
 .menu-button {
     background-color: #5A2653;
     color: white;
-    padding: 30px 49.5px;
+    padding: 30px 0;
     border: none;
     border-radius: 8px;
     font-size: 1.8rem; /* Decreased font size significantly */
@@ -198,7 +198,7 @@ h2 {
     box-shadow: 0 10px 0 #3d1a38, 0 16px 30px rgba(0,0,0,0.4);
     text-transform: uppercase;
     display: inline-block;
-    width: auto;
+    width: 251px;
     align-self: center;
     animation: float 3s infinite ease-in-out;
 }
@@ -486,7 +486,7 @@ h2 {
     .menu-button {
         font-size: 0.968rem; /* 10% bigger */
         padding: 18.15px 0; /* Remove horizontal padding to let width control */
-        width: 72vw;
+        width: 251px;
     }
     .menu-button-text {
         font-size: 1.438rem;
@@ -601,7 +601,7 @@ h2 {
         height: 56px;
     }
     .menu-button {
-        padding: 24px 55px;
+        padding: 24px 0;
         font-size: 2rem;
     }
 }

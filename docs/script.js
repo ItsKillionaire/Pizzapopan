@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuSound = document.getElementById("menu-sound");
   const scarySound = document.getElementById("scary-sound");
   const rbSound = document.getElementById("rb-sound");
+  const windChimeSound = document.getElementById("wind-chime-sound");
   const pizzaTimeSound = document.getElementById("pizza-time-sound");
   const openMenuBtn = document.getElementById("open-menu-btn");
   const closeMenuBtn = document.getElementById("close-menu-btn");
@@ -45,6 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let bbqHotClickCount = 0;
   let bbqHotLastClickTime = 0;
+  let colibriTimeout;
 
   const openModal = (modal) => {
     if (!modal) return;
@@ -108,6 +110,10 @@ document.addEventListener("DOMContentLoaded", () => {
           popupImage.alt = foundImage.alt;
           openModal(menuModal);
           openModal(imagePopupOverlay);
+
+          if (foundImage.alt.includes('Colibrí')) {
+            colibriTimeout = setTimeout(triggerColibriEasterEgg, 10000);
+          }
         } else {
           closeModal(menuModal);
           closeModal(imagePopupOverlay);
@@ -202,6 +208,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   imagePopupOverlay.addEventListener("click", () => {
     window.history.back();
+    clearTimeout(colibriTimeout);
+    const hummingbirdImage = document.querySelector(".easter-egg-image.hummingbird");
+    if (hummingbirdImage) {
+      hummingbirdImage.remove();
+    }
   });
 
   if (phoneNumber) {
@@ -371,6 +382,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     animate();
+  }
+
+  function triggerColibriEasterEgg() {
+    const hummingbirdImage = document.createElement("img");
+    hummingbirdImage.src = "assets/hummingbird.gif";
+    hummingbirdImage.className = "easter-egg-image hummingbird";
+    easterEggContainer.appendChild(hummingbirdImage);
+
+    windChimeSound.currentTime = 0;
+    windChimeSound.play().catch(error => console.error("Error playing wind chime sound:", error));
+
+    setTimeout(() => {
+      hummingbirdImage.remove();
+    }, 4000);
   }
 
   function triggerNewEasterEgg() {

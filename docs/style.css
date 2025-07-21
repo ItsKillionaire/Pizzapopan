@@ -649,7 +649,7 @@ h2 {
     height: 100%;
     overflow: hidden;
     pointer-events: none;
-    z-index: 999;
+    z-index: 1002;
 }
 
 .easter-egg-image {
@@ -665,6 +665,40 @@ h2 {
     width: 100vw;
     height: 100vh;
     object-fit: contain;
+}
+
+.easter-egg-image.hummingbird {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    pointer-events: none;
+    animation: hummingbird-fly 4s ease-in-out forwards;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes hummingbird-fly {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    25% {
+        opacity: 1;
+        transform: translate(-70%, -60%) scale(1) rotate(-15deg);
+    }
+    50% {
+        transform: translate(-30%, -40%) scale(1) rotate(15deg);
+    }
+    75% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
 }
 
 @keyframes vanish-glitch {

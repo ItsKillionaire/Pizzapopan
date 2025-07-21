@@ -190,7 +190,7 @@ h2 {
     padding: 30px 44.55px;
     border: none;
     border-radius: 8px;
-    font-size: 1.8rem; /* Decreased font size significantly */
+    font-size: 1.8rem;
     font-weight: 700;
     cursor: pointer;
     transition: transform 0.1s ease, box-shadow 0.1s ease;
@@ -484,8 +484,8 @@ h2 {
         right: 10px;
     }
     .menu-button {
-        font-size: 0.968rem; /* 10% bigger */
-        padding: 18.15px 0; /* Remove horizontal padding to let width control */
+        font-size: 0.968rem;
+        padding: 18.15px 0;
         width: 225.9px;
     }
     .menu-button-text {
@@ -624,7 +624,6 @@ h2 {
     }
 }
 
-/* Animations */
 .menu-button.shine-effect {
     animation: float 3s infinite ease-in-out, shine-animation 1.5s forwards;
 }
@@ -648,24 +647,24 @@ h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden; /* Hide images when they go off-screen */
-    pointer-events: none; /* Allow clicks to pass through */
-    z-index: 999; /* Ensure it's above other content but below modals */
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 999;
 }
 
 .easter-egg-image {
     position: absolute;
-    width: 200px; /* Example size, adjust as needed */
-    height: 200px; /* Example size, adjust as needed */
-    object-fit: contain; /* Ensure the image scales correctly within its bounds */
-    pointer-events: none; /* Inherited, but good to be explicit */
-    transition: transform linear; /* For smooth movement */
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    pointer-events: none;
+    transition: transform linear;
 }
 
 .easter-egg-image.scary {
     width: 100vw;
     height: 100vh;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 @keyframes vanish-glitch {

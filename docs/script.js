@@ -51,18 +51,32 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const handleHashChange = () => {
-    switch (window.location.hash) {
-      case "#menu":
+    const hash = window.location.hash.substring(1); // Remove the #
+    switch (hash) {
+      case "menu":
         openModal(menuModal);
         closeModal(imagePopupOverlay);
         break;
-      case "#image":
+      case "image": // Fallback for old #image hash
         openModal(menuModal); // Ensure menu stays open
         openModal(imagePopupOverlay);
         break;
       default:
-        closeModal(menuModal);
-        closeModal(imagePopupOverlay);
+        // Check if the hash corresponds to a pizza name
+        const foundImage = Array.from(document.querySelectorAll(".menu-item img")).find(img => {
+          const pizzaName = img.alt.split(' con ')[0].toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+          return pizzaName === hash;
+        });
+
+        if (foundImage) {
+          popupImage.src = foundImage.src;
+          popupImage.alt = foundImage.alt;
+          openModal(menuModal); // Ensure menu stays open
+          openModal(imagePopupOverlay);
+        } else {
+          closeModal(menuModal);
+          closeModal(imagePopupOverlay);
+        }
         break;
     }
   };
@@ -124,7 +138,9 @@ document.addEventListener("DOMContentLoaded", () => {
     image.addEventListener("click", () => {
       popupImage.src = image.src;
       popupImage.alt = image.alt;
-      window.location.hash = "image";
+      // Extract and sanitize pizza name from alt text for URL hash
+      const pizzaName = image.alt.split(' con ')[0].toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+      window.location.hash = pizzaName;
     });
   });
 

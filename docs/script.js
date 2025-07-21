@@ -1,3 +1,4 @@
+document.addEventListener('contextmenu', event => event.preventDefault());
 document.addEventListener("DOMContentLoaded", () => {
   const logo = document.querySelector(".logo");
   const sound = document.getElementById("logo-sound");

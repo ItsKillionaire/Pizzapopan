@@ -661,3 +661,45 @@ h2 {
     pointer-events: none; /* Inherited, but good to be explicit */
     transition: transform linear; /* For smooth movement */
 }
+
+.easter-egg-image.scary {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+}
+
+@keyframes vanish-glitch {
+  0% {
+    clip-path: inset(0% 0% 0% 0%);
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  20% {
+    clip-path: inset(80% 0% 5% 0%);
+    transform: translate(-10px, 5px);
+  }
+  40% {
+    clip-path: inset(10% 0% 60% 0%);
+    transform: translate(10px, -5px);
+  }
+  60% {
+    clip-path: inset(40% 0% 40% 0%);
+    transform: translate(-5px, 10px);
+  }
+  80% {
+    clip-path: inset(90% 0% 2% 0%);
+    transform: translate(5px, -10px);
+    opacity: 1;
+  }
+  100% {
+    clip-path: inset(50% 0% 50% 0%);
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+}
+
+.glitch-effect {
+  filter: invert(100%);
+  animation: vanish-glitch 1s forwards;
+  border-radius: 8px;
+}

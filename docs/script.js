@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const sound = document.getElementById("logo-sound");
   const menuSound = document.getElementById("menu-sound");
   const scarySound = document.getElementById("scary-sound");
+  const rbSound = document.getElementById("rb-sound");
   const pizzaTimeSound = document.getElementById("pizza-time-sound");
   const openMenuBtn = document.getElementById("open-menu-btn");
   const closeMenuBtn = document.getElementById("close-menu-btn");
@@ -21,6 +22,16 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
   const easterEggContainer = document.getElementById("easter-egg-container");
 
+  const blockingOverlay = document.createElement("div");
+  blockingOverlay.style.position = "fixed";
+  blockingOverlay.style.top = "0";
+  blockingOverlay.style.left = "0";
+  blockingOverlay.style.width = "100vw";
+  blockingOverlay.style.height = "100vh";
+  blockingOverlay.style.zIndex = "9999";
+  blockingOverlay.style.display = "none";
+  document.body.appendChild(blockingOverlay);
+
   const imagePopupOverlay = document.createElement("div");
   imagePopupOverlay.className = "image-popup-overlay";
   imagePopupOverlay.innerHTML = `
@@ -31,6 +42,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.body.appendChild(imagePopupOverlay);
   const popupImage = imagePopupOverlay.querySelector("img");
 
+  let bbqHotClickCount = 0;
+  let bbqHotLastClickTime = 0;
+
   const openModal = (modal) => {
     if (!modal) return;
     modal.classList.add("active");
@@ -40,7 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeModal = (modal) => {
     if (!modal) return;
     modal.classList.remove("active");
-    // Only restore scrolling if no other modals are active
     if (
       !document.querySelector(
         ".modal-overlay.active, .image-popup-overlay.active",
@@ -51,18 +64,39 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const handleHashChange = () => {
-    const hash = window.location.hash.substring(1); // Remove the #
+    const hash = window.location.hash.substring(1);
+    if (hash === 'bbq-hot-easter-egg') {
+        popupImage.src = "assets/ee/spooky/d.jpg";
+        popupImage.alt = "Easter Egg";
+        popupImage.style.borderRadius = "8px";
+        openModal(imagePopupOverlay);
+        imagePopupOverlay.style.pointerEvents = "none";
+
+        setTimeout(() => {
+            popupImage.classList.add("glitch-effect");
+            setTimeout(() => {
+                window.history.back();
+                setTimeout(() => {
+                    popupImage.classList.remove("glitch-effect");
+                    imagePopupOverlay.style.pointerEvents = "auto";
+                    blockingOverlay.style.display = "none";
+                    bbqHotClickCount = 0;
+                }, 1000);
+            }, 1000);
+        }, 3000);
+        return;
+    }
+
     switch (hash) {
       case "menu":
         openModal(menuModal);
         closeModal(imagePopupOverlay);
         break;
-      case "image": // Fallback for old #image hash
-        openModal(menuModal); // Ensure menu stays open
+      case "image":
+        openModal(menuModal);
         openModal(imagePopupOverlay);
         break;
       default:
-        // Check if the hash corresponds to a pizza name
         const foundImage = Array.from(document.querySelectorAll(".menu-item img")).find(img => {
           const pizzaName = img.alt.split(' con ')[0].toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
           return pizzaName === hash;
@@ -71,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (foundImage) {
           popupImage.src = foundImage.src;
           popupImage.alt = foundImage.alt;
-          openModal(menuModal); // Ensure menu stays open
+          openModal(menuModal);
           openModal(imagePopupOverlay);
         } else {
           closeModal(menuModal);
@@ -81,9 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Use onhashchange to handle back/forward and manual hash changes
   window.addEventListener("hashchange", handleHashChange);
-  // Initial check in case user lands with a hash
   handleHashChange();
 
   if (logo && sound && pizzaTimeSound) {
@@ -135,13 +167,36 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   document.querySelectorAll(".menu-item img").forEach((image) => {
-    image.addEventListener("click", () => {
-      popupImage.src = image.src;
-      popupImage.alt = image.alt;
-      // Extract and sanitize pizza name from alt text for URL hash
-      const pizzaName = image.alt.split(' con ')[0].toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-      window.location.hash = pizzaName;
-    });
+      image.addEventListener("click", (event) => {
+          if (image.alt.includes("BBQ Hot")) {
+              const now = Date.now();
+              if (now - bbqHotLastClickTime > 60000) {
+                  bbqHotClickCount = 1;
+              } else {
+                  bbqHotClickCount++;
+              }
+              bbqHotLastClickTime = now;
+
+              if (bbqHotClickCount === 20) {
+                  event.stopPropagation();
+                  const hasSeenEasterEgg = localStorage.getItem('hasSeenBBQHotEasterEgg');
+                  if (!hasSeenEasterEgg) {
+                    triggerNewEasterEgg();
+                    localStorage.setItem('hasSeenBBQHotEasterEgg', 'true');
+                  } else {
+                    popupImage.src = image.src;
+                    popupImage.alt = image.alt;
+                    const pizzaName = image.alt.split(' con ')[0].toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+                    window.location.hash = pizzaName;
+                  }
+                  return;
+              }
+          }
+          popupImage.src = image.src;
+          popupImage.alt = image.alt;
+          const pizzaName = image.alt.split(' con ')[0].toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+          window.location.hash = pizzaName;
+      });
   });
 
   imagePopupOverlay.addEventListener("click", () => {
@@ -178,22 +233,19 @@ document.addEventListener("DOMContentLoaded", () => {
     yearSpan.textContent = new Date().getFullYear();
   }
 
-  // Shine animation for menu button
   if (openMenuBtn) {
     const triggerShine = () => {
       openMenuBtn.classList.add("shine-effect");
       setTimeout(() => {
         openMenuBtn.classList.remove("shine-effect");
-      }, 1500); // Animation duration is 1.5s
+      }, 1500);
     };
 
-    // Trigger shine randomly between 10 to 20 seconds
     setInterval(() => {
-      const randomDelay = Math.random() * 10000 + 10000; // Random between 10s and 20s
+      const randomDelay = Math.random() * 10000 + 10000;
       setTimeout(triggerShine, randomDelay);
-    }, 10000); // Check every 10 seconds if a shine should be triggered
+    }, 10000);
 
-    // Initial shine after a short delay
     setTimeout(triggerShine, 2000);
   }
 
@@ -208,7 +260,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const logoWidth = logo.offsetWidth;
     const logoHeight = logo.offsetHeight;
 
-    // Set initial size of the egg image to match the logo
     eggImage.style.width = `${logoWidth}px`;
     eggImage.style.height = `${logoHeight}px`;
 
@@ -216,41 +267,40 @@ document.addEventListener("DOMContentLoaded", () => {
     const screenHeight = window.innerHeight;
 
     let x, y, vx, vy;
-    const speed = 10; // Base speed of the image
-    const minVelocityMagnitude = speed / 2; // Ensure a minimum speed in each axis
+    const speed = 10;
+    const minVelocityMagnitude = speed / 2;
 
-    // Randomly choose a side to enter from (0: top, 1: right, 2: bottom, 3: left)
     const entrySide = Math.floor(Math.random() * 4);
 
     switch (entrySide) {
-      case 0: // Top
+      case 0:
         x = Math.random() * (screenWidth - logoWidth);
         y = -logoHeight;
         vx =
           (Math.random() < 0.5 ? -1 : 1) *
           (Math.random() * speed + minVelocityMagnitude);
-        vy = Math.random() * speed + minVelocityMagnitude; // Always move down
+        vy = Math.random() * speed + minVelocityMagnitude;
         break;
-      case 1: // Right
+      case 1:
         x = screenWidth;
         y = Math.random() * (screenHeight - logoHeight);
-        vx = -(Math.random() * speed + minVelocityMagnitude); // Always move left
+        vx = -(Math.random() * speed + minVelocityMagnitude);
         vy =
           (Math.random() < 0.5 ? -1 : 1) *
           (Math.random() * speed + minVelocityMagnitude);
         break;
-      case 2: // Bottom
+      case 2:
         x = Math.random() * (screenWidth - logoWidth);
         y = screenHeight;
         vx =
           (Math.random() < 0.5 ? -1 : 1) *
           (Math.random() * speed + minVelocityMagnitude);
-        vy = -(Math.random() * speed + minVelocityMagnitude); // Always move up
+        vy = -(Math.random() * speed + minVelocityMagnitude);
         break;
-      case 3: // Left
+      case 3:
         x = -logoWidth;
         y = Math.random() * (screenHeight - logoHeight);
-        vx = Math.random() * speed + minVelocityMagnitude; // Always move right
+        vx = Math.random() * speed + minVelocityMagnitude;
         vy =
           (Math.random() < 0.5 ? -1 : 1) *
           (Math.random() * speed + minVelocityMagnitude);
@@ -258,7 +308,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     let bounces = 0;
-    const maxBounces = Math.floor(Math.random() * 3) + 3; // Random between 3 and 5
+    const maxBounces = Math.floor(Math.random() * 3) + 3;
     let animationFrameId;
 
     function animate() {
@@ -267,41 +317,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
       let bouncedThisFrame = false;
 
-      // Collision detection and bounce
       if (bounces < maxBounces) {
-        // Horizontal collision
         if (x + logoWidth > screenWidth - screenWidth / 2.3) {
-          // Hit right edge
-          x = screenWidth - logoWidth - screenWidth / 2.3; // Clamp position
+          x = screenWidth - logoWidth - screenWidth / 2.3;
           if (vx > 0) {
-            // Only reverse if moving towards the edge
             vx *= -1;
             bouncedThisFrame = true;
           }
         } else if (x < -(screenWidth / 1.5)) {
-          // Hit left edge
-          x = -(screenWidth / 1.5); // Clamp position
+          x = -(screenWidth / 1.5);
           if (vx < 0) {
-            // Only reverse if moving towards the edge
             vx *= -1;
             bouncedThisFrame = true;
           }
         }
 
-        // Vertical collision
         if (y + logoHeight > screenHeight) {
-          // Hit bottom edge
-          y = screenHeight - logoHeight; // Clamp position
+          y = screenHeight - logoHeight;
           if (vy > 0) {
-            // Only reverse if moving towards the edge
             vy *= -1;
             bouncedThisFrame = true;
           }
         } else if (y < 0) {
-          // Hit top edge
-          y = 0; // Clamp position
+          y = 0;
           if (vy < 0) {
-            // Only reverse if moving towards the edge
             vy *= -1;
             bouncedThisFrame = true;
           }
@@ -314,8 +353,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       eggImage.style.transform = `translate(${x}px, ${y}px)`;
 
-      // Remove image if it goes too far off-screen after max bounces
-      const removalThreshold = Math.max(logoWidth, logoHeight) * 2; // Go further off screen
+      const removalThreshold = Math.max(logoWidth, logoHeight) * 2;
       const isCompletelyOffScreen =
         x > screenWidth + removalThreshold ||
         x < -removalThreshold ||
@@ -332,6 +370,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     animate();
+  }
+
+  function triggerNewEasterEgg() {
+    blockingOverlay.style.display = "block";
+    rbSound.currentTime = 0;
+    rbSound.play().catch(error => console.error("Error playing rb sound:", error));
+    window.location.hash = "bbq-hot-easter-egg";
   }
 
   function triggerScaryEasterEgg() {
@@ -356,17 +401,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(() => {
         let fadeOutInterval = setInterval(() => {
-            if (scarySound.volume > 0.005) { // Fade out to near zero
-                scarySound.volume -= 0.005; // Smaller step for smoother fade over 15s
+            if (scarySound.volume > 0.005) {
+                scarySound.volume -= 0.005;
             } else {
                 scarySound.pause();
                 scarySound.currentTime = 0;
-                scarySound.volume = 1; // Reset volume for next play
+                scarySound.volume = 1;
                 clearInterval(fadeOutInterval);
             }
-        }, 75); // Adjust interval for 15-second fade (75ms * 200 steps = 15000ms)
+        }, 75);
         scaryImage.style.opacity = "0";
-    }, 28000); // Start fade out after 28 seconds
+    }, 28000);
 
     setTimeout(() => {
         scaryImage.remove();
